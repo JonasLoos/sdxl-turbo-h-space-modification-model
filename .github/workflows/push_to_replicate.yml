@@ -12,9 +12,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: Free up space
+      run: |
+        df -h
+        sudo apt-get remove -y '^ghc-8.*'
+        sudo apt-get remove -y '^dotnet-.*'
+        sudo apt-get remove -y '^llvm-.*'
+        sudo apt-get remove -y 'php.*'
+        sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel
+        sudo apt-get autoremove -y
+        sudo apt-get clean
+        df -h
+        echo "Removing large directories"
+        rm -rf /usr/share/dotnet/
+        df -h
+
     - name: Setup Cog
       uses: replicate/setup-cog@v1
       with:
         token: ${{ secrets.REPLICATE_API_TOKEN }}
+
     - name: Push to Replicate
       run: cog push r8.im/jonasloos/sdxl-turbo-h-space-modification-model
