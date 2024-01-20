@@ -23,8 +23,9 @@ jobs:
 
     - name: Download Model
       run: |
+        pip install torch diffusers transformers
         mkdir model
-        python -c "import torch;from diffusers import AutoPipelineForText2Image;AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
+        python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
 
 
     - name: Push to Replicate
