@@ -11,7 +11,7 @@ class Predictor(BasePredictor):
         self.directions = torch.load('directions.pt').to('cuda')
 
     def predict(self,
-            prompt: Path = Input(description="Prompt to generate image for"),
+            prompt: str = Input(description="Prompt to generate image for"),
             scales: str = Input(description="Comma separated list of direction modification scales"),
             diffusion_steps: int = Input(description="Number of diffusion steps",  default=1, ge=1),
             seed: int = Input(description="Seed for random number generator, 0 for random", default=0),
