@@ -3,6 +3,7 @@ name: Build and push to replicate
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,12 +22,17 @@ jobs:
       with:
         token: ${{ secrets.REPLICATE_API_TOKEN }}
 
-    - name: Download Model
-      run: |
-        pip install torch diffusers transformers
-        mkdir model
-        python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
+    # - name: Download Model
+    #   run: |
+    #     pip install torch diffusers transformers
+    #     mkdir model
+    #     python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
 
+    - name: Show free space
+      run: df -h
 
     - name: Push to Replicate
       run: cog push r8.im/jonasloos/sdxl-turbo-h-space-modification-model
+
+    - name: Show free space
+      run: df -h
