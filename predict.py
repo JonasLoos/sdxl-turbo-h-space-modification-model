@@ -9,7 +9,7 @@ class Predictor(BasePredictor):
         """Load the model into memory to make running multiple predictions efficient"""
         self.pipe = AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant="fp16", cache_dir='model').to('cuda')
         # self.pipe = AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant="fp16", cache_dir='model', local_files_only=True).to('cuda')
-        self.directions = torch.load('directions.pt').to('cuda')
+        self.directions = torch.load('directions.pt').to('cuda').half()
 
     def predict(self,
             prompt: str = Input(description="Prompt to generate image for"),
@@ -21,7 +21,7 @@ class Predictor(BasePredictor):
         # check inputs
         if diffusion_steps != 1:
             raise NotImplementedError("Diffusion steps != 1 is not supported yet")
-        scales = torch.tensor([float(s) for s in scales.split(',')], device='cuda')
+        scales = torch.tensor([float(s) for s in scales.split(',')], device='cuda').to('cuda').half()
         if len(scales) != len(self.directions):
             raise ValueError("Number of scales must match number of directions")
 

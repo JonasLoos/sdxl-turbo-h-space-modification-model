@@ -41,7 +41,7 @@ def get_representation(text, count):
 
 
 def save_directions():
-    directions = torch.zeros((len(attributes), 1280, 16, 16), device='cuda')
+    directions = torch.zeros((len(attributes), 1280, 16, 16), device='cuda', dtype=torch.float16)
     for i, (name, pairs) in enumerate(tqdm(attributes.items(), desc='generating attribute directions')):
         diffs = []
         for negative, positive in tqdm(pairs, leave=False):
