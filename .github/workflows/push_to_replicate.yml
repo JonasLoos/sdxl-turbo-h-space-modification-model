@@ -22,14 +22,14 @@ jobs:
       with:
         token: ${{ secrets.REPLICATE_API_TOKEN }}
 
-    - name: Show free space
-      run: df -h
+    # - name: Show free space
+    #   run: df -h
   
-    - name: Download Model
-      run: |
-        pip install torch diffusers transformers
-        mkdir model
-        python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
+    # - name: Download Model
+    #   run: |
+    #     pip install torch diffusers transformers
+    #     mkdir model
+    #     python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
 
     - name: Show free space
       run: df -h

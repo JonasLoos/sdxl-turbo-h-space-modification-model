@@ -6,4 +6,6 @@ build:
     - "diffusers"
     - "transformers"
     - "accelerate"
+run:
+  - python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
 predict: "predict.py:Predictor"
