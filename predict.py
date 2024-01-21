@@ -7,8 +7,8 @@ import tempfile
 class Predictor(BasePredictor):
     def setup(self):
         """Load the model into memory to make running multiple predictions efficient"""
-        self.pipe = AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant="fp16", cache_dir='model').to('cuda')
-        # self.pipe = AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant="fp16", cache_dir='model', local_files_only=True).to('cuda')
+        # self.pipe = AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant="fp16", cache_dir='model').to('cuda')
+        self.pipe = AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant="fp16", cache_dir='model', local_files_only=True).to('cuda')
         self.directions = torch.load('directions.pt').to('cuda').half()
 
     def predict(self,
