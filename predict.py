@@ -28,7 +28,7 @@ class Predictor(BasePredictor):
         # run prediction
         def hook_fn(module, input, output):
             '''Modify h-space'''
-            return output + (self.directions * scales.reshape((-1,1,1,1)).sum(dim=0, keepdim=True)
+            return output + (self.directions * scales.reshape((-1,1,1,1))).sum(dim=0, keepdim=True)
         with torch.no_grad(), self.pipe.unet.mid_block.register_forward_hook(hook_fn):
             img = self.pipe(prompt = prompt, num_inference_steps = diffusion_steps, guidance_scale = 0.0, generator = torch.Generator('cuda').manual_seed(seed)).images[0]
         
