@@ -1,0 +1,45 @@
+[
+    {
+        "base_prompt": "a portrait of a person",
+        "attributes": [
+            {
+                "attribute": "smiling",
+                "prompt": "a portrait of a smiling person"
+            },
+            {
+                "attribute": "old",
+                "prompt": "a portrait of an old person"
+            },
+            {
+                "attribute": "cyberpunk",
+                "prompt": "a portrait of a person, cyberpunk"
+            }
+        ]
+    },
+    {
+        "base_prompt": "a dog in a park",
+        "attributes": [
+            {
+                "attribute": "large",
+                "prompt": "a large dog in a park"
+            },
+            {
+                "attribute": "winter",
+                "prompt": "a dog in a park, winter"
+            }
+        ]
+    },
+    {
+        "base_prompt": "a large tree",
+        "attributes": [
+            {
+                "attribute": "leaves",
+                "prompt": "a large tree having many leaves"
+            },
+            {
+                "attribute": "winter",
+                "prompt": "a large tree in winter"
+            }
+        ]
+    }
+]
