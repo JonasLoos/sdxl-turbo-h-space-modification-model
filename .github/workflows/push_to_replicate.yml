@@ -31,10 +31,7 @@ jobs:
     - name: Downlaod weights
       run: |
         df -h
-        pwd
-        ls
-        chmod -R 777 download-weights.py
-        cog run download-weights.py
+        cog run python download-weights.py
         df -h
 
     - name: Push to Replicate
