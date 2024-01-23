@@ -28,12 +28,23 @@ jobs:
     #     mkdir model
     #     python -c "import torch; import diffusers; diffusers.AutoPipelineForText2Image.from_pretrained('stabilityai/sdxl-turbo', torch_dtype=torch.float16, variant='fp16', cache_dir='model')"
 
-    - name: Downlaod weights
-      run: |
-        df -h
-        cog run python download-weights.py
-        df -h
+    - name: Show free space
+      run: df -h
 
+    - name: Downlaod weights
+      run: cog run python download-weights.py
+
+    - name: Show free space
+      run: df -h
+
+    - name: Further cleanup
+      run: |
+        docker system df -v
+        rm -rf /opt/hostedtoolcache
+
+    - name: Show free space
+      run: df -h
+  
     - name: Push to Replicate
       run: cog push r8.im/jonasloos/sdxl-turbo-h-space-modification-model
 

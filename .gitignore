@@ -1,2 +1,3 @@
 .cog
 model/
+__pycache__/
