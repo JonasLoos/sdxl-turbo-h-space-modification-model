@@ -1,18 +1,18 @@
 [
     {
-        "base_prompt": "a portrait of a person",
+        "base_prompt": "a portrait of a woman",
         "attributes": [
             {
                 "attribute": "smiling",
-                "prompt": "a portrait of a smiling person"
+                "prompt": "a portrait of a smiling woman"
             },
             {
                 "attribute": "old",
-                "prompt": "a portrait of an old person"
+                "prompt": "a portrait of an old woman"
             },
             {
                 "attribute": "cyberpunk",
-                "prompt": "a portrait of a person, cyberpunk"
+                "prompt": "a portrait of a woman, cyberpunk"
             }
         ]
     },
@@ -37,8 +37,8 @@
                 "prompt": "a large tree having many leaves"
             },
             {
-                "attribute": "winter",
-                "prompt": "a large tree in winter"
+                "attribute": "desert",
+                "prompt": "a large tree in the desert"
             }
         ]
     }

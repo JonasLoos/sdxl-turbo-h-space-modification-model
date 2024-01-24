@@ -27,11 +27,11 @@ def save_directions():
     directions = []
     for prompt in tqdm(attributes, desc='Base prompts'):
         base_prompt = prompt['base_prompt']
-        base_repr = get_representation(base_prompt, 50)
+        base_repr = get_representation(base_prompt, 200)
         for attribute in tqdm(prompt['attributes'], desc='Attributes', leave=False):
             name = attribute['attribute']
             prompt = attribute['prompt']
-            prompt_repr = get_representation(prompt, 50)
+            prompt_repr = get_representation(prompt, 200)
             directions.append(prompt_repr - base_repr)
     directions = torch.stack(directions)
     print(f'Directions shape: {directions.shape}')
